@@ -1,0 +1,112 @@
+package actions;
+
+import enumeration.Colors;
+import enumeration.Thickness;
+
+import java.util.Objects;
+
+public class Portrait {
+    //portrait can't do something, but it is used by characters
+    public String name;
+
+    //there are 2 inner static class face and body portrait
+    public static class Face extends Portrait {
+        /**
+         * fields fields part of the face
+         */
+        public Colors nose;
+        public Colors ears;
+        public Colors lips;
+        public Colors eyes;
+        public Colors mustache;
+
+        //Initially, everything in the portrait is white
+        public Face() {
+            this("Portrait", Colors.WHITE, Colors.WHITE, Colors.WHITE, Colors.WHITE, Colors.WHITE);
+        }
+
+        //Initially, everything in the portrait is white
+        public Face(String name) {
+            this(name, Colors.WHITE, Colors.WHITE, Colors.WHITE, Colors.WHITE, Colors.WHITE);
+        }
+
+        /**
+         * constructor
+         *
+         * @param nose
+         * @param ears
+         * @param lips
+         * @param eyes
+         * @param mustache
+         */
+        public Face(String name, Colors nose, Colors ears, Colors lips, Colors eyes, Colors mustache) {
+            this.name = name;
+            this.nose = nose;
+            this.ears = ears;
+            this.lips = lips;
+            this.eyes = eyes;
+            this.mustache = mustache;
+        }
+
+        //equals parts of portrait
+        public boolean equals(Face obj) {
+            return this.nose.equals(obj.nose) & this.ears.equals(obj.ears) & this.lips.equals(obj.lips) & this.eyes.equals(obj.eyes) & this.mustache.equals(obj.mustache);
+        }
+    }
+
+    public static class Body extends Portrait.Face {
+        /**
+         * fields fields part of the body portrait
+         */
+        public Thickness had;
+        public Thickness legs;
+        public Thickness arms;
+        public Thickness belly;
+        public Thickness tail;
+
+        //Initially, everything in the portrait is white
+        public Body() {
+            this("Portrait", Thickness.NOT, Thickness.NOT, Thickness.NOT, Thickness.NOT, Thickness.NOT);
+        }
+
+        //Initially, everything in the portrait is white
+        public Body(String name) {
+            this(name, Thickness.NOT, Thickness.NOT, Thickness.NOT, Thickness.NOT, Thickness.NOT);
+        }
+
+        /**
+         * constructor
+         *
+         * @param name
+         * @param had
+         * @param legs
+         * @param arms
+         * @param belly
+         * @param tail
+         */
+        public Body(String name, Thickness had, Thickness legs, Thickness arms, Thickness belly, Thickness tail) {
+            this.name = name;
+            this.had = had;
+            this.legs = legs;
+            this.arms = arms;
+            this.belly = belly;
+            this.tail = tail;
+        }
+
+        //equals parts of portrait
+        public boolean equals(Body obj) {
+            return this.had.equals(obj.had) & this.legs.equals(obj.legs) & this.arms.equals(obj.arms) & this.belly.equals(obj.belly) & this.tail.equals(obj.tail);
+        }
+    }
+
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
+}
