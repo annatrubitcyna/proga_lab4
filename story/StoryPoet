@@ -1,0 +1,22 @@
+package story;
+
+import actions.Portrait;
+import character.*;
+import control.Author;
+import enumeration.Colors;
+import enumeration.How;
+import enumeration.Speed;
+
+public class StoryArtist implements Story {
+    public String name = "How Neznaika was a poet";
+
+    @Override
+    public void story() {
+        //there are conditions under which the cycle will break
+        while (true) {
+            Author narrator = new Author(); //create Author this story
+            narrator.startStory(1, this.name); //author start story
+            //create heroes story
+            Neznaika neznaika= new Neznaika();
+            Tsvetik tsvetik = new Tsvetik();
+}}} 
