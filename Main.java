@@ -18,12 +18,16 @@ public class Main {
 
             @Override
             public String exclaim() {
-                return null;
+                String word = "Today we will get acquainted with the book by Nicolai Nosov: The Adventures of Neznaika and his friends!";
+                System.out.println(word);
+                return word;
             }
 
             @Override
             public String ask() {
-                return null;
+                String word = " Do you want to will get acquainted with the book by Nicolai Nosov: "The Adventures of Neznaika and his friends" today? ";
+                System.out.println(word);
+                return word;
             }
         };
         //start story
