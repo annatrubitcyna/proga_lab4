@@ -1,11 +1,10 @@
 package enumeration;
 
-public enum Thickness {
-    NOT,
+public enum HowSpeed {
+    SLOWLY,
     NORMAL,
-    THICK,
-    THIN,
-    SMALL;
+    QUICKLY;
+
     @Override
     public String toString() {
         return this.name().toLowerCase();

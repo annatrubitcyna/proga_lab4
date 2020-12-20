@@ -1,11 +1,9 @@
 package enumeration;
 
-public enum Thickness {
-    NOT,
+public enum HowGood {
+    GOOD,
     NORMAL,
-    THICK,
-    THIN,
-    SMALL;
+    BAD;
     @Override
     public String toString() {
         return this.name().toLowerCase();

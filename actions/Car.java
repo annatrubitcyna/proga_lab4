@@ -1,20 +1,9 @@
 package actions;
 
-import enumeration.Colors;
 import enumeration.Material;
 import exceptions.NoSparklingWaterException;
 
 public class Car {
-    /**
-     * car components
-     */
-    private Material seat;
-    private Material tank;
-    private Material tube;
-    private Material cylinder;
-    private Material wheel;
-    private Material syrupCan;
-    private Material tubeWithCock;
     //amount of Fuel
     public int amountOfWater = 0;
 
@@ -35,13 +24,6 @@ public class Car {
      * @param tubeWithCock
      */
     public Car(Material seat, Material tank, Material tube, Material cylinder, Material wheel, Material syrupCan, Material tubeWithCock) {
-        this.seat = seat;
-        this.tank = tank;
-        this.tube = tube;
-        this.cylinder = cylinder;
-        this.wheel = wheel;
-        this.syrupCan = syrupCan;
-        this.tubeWithCock = tubeWithCock;
     }
 
     /**
@@ -50,11 +32,10 @@ public class Car {
     public class Gas {
         /**
          * String flows()
-         *
-         * @return word
          */
         String flows() {
             String word = "Gas flows throught the tube";
+            System.out.println(word);
             return word;
         }
 
@@ -65,6 +46,7 @@ public class Car {
          */
         String pushes() {
             String word = "Gas pushes piston";
+            System.out.println(word);
             return word;
         }
     }
@@ -77,6 +59,7 @@ public class Car {
          */
         String move() {
             String word = "Piston goes back and forth";
+            System.out.println(word);
             return word;
         }
     }
@@ -89,11 +72,16 @@ public class Car {
          */
         String rotate() {
             String word = "Wheels rotate";
+            System.out.println(word);
             return word;
         }
     }
 
-    //The car drives after the mechanism is running
+    /**
+     * car go
+     *
+     * @return word
+     */
     private String go() {
         String word = "Car rides";
         System.out.println(word);
@@ -122,7 +110,7 @@ public class Car {
         String go = "";
         //if wheels rotate car go
         if (rotate.contains("rotate")) {
-            if (this.amountOfWater >= 5) go = this.go();
+            if (this.amountOfWater >= 5) go = this.go();//The car drives after the mechanism is running
             else {
                 throw new NoSparklingWaterException("Not enough fuel, refuel the car!");
             }

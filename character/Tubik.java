@@ -3,22 +3,20 @@ package character;
 import actions.Drawable;
 import actions.Portrait;
 import enumeration.Colors;
+import enumeration.HowGood;
 
 public class Tubik extends Korotishki implements Drawable {
-    //if there isn't name of character, his name is Tubik
-    public Tubik() {
-        this("Tubik");
-        this.thinks = new String[]{"paint", "brush" };
-    }
-
     /**
      * constructor
      *
-     * @param name
-     * @brief Creates Tubik with a certan name
+     * @brief sets the parameters
      */
-    public Tubik(String name) {
-        super(name);
+    public Tubik() {
+        super("Tubik");
+        this.thinks = new String[]{"paint", "brush", "easel", "palette" };
+        this.clothes=new String[]{"long blouse-hoodie", "long hair"};
+        this.profession="artist";
+        this.howGoodProfessional= HowGood.GOOD;
     }
 
 

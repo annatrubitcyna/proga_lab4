@@ -2,32 +2,312 @@ package character;
 
 import actions.Dialogue;
 import actions.Drawable;
+import actions.Poet;
 import actions.Portrait;
 import control.Time;
 import enumeration.Colors;
+import enumeration.HowComparison;
+import enumeration.HowGood;
+import enumeration.HowSpeed;
 import enumeration.Thickness;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import static enumeration.Colors.*;
 
-public class Neznaika extends Korotishki implements Drawable, Dialogue {
-    //if there isn't name of character, his name is Neznaika
-    public Neznaika() {
-        this("Neznaika");
-        this.thinks = new String[]{"" };
-    }
-
+public class Neznaika extends Korotishki implements Drawable, Dialogue, Poet {
+    String had;
+    String hadThink;
     /**
      * constructor
      *
-     * @param name
-     * @brief Creates Neznaika with a certan name
+     * @brief sets the parameters
      */
-    public Neznaika(String name) {
-        super(name);
+    public Neznaika() {
+        super("Neznaika");
+        this.thinks = new String[]{""};
+        this.famous= HowComparison.VERY;
+        this.clothes= new String[]{"bright blue hat", "yellow canary pants", "orange shirt", "green tie"};
     }
+
+    String famos="In particular, Neznaika became famous after one of history.";
+
+    /**
+     * became famous
+     * @return word
+     */
+    public String becameFamous(){
+        String word=this.famos;
+        System.out.println(word);
+        return word;
+    }
+
+    /**
+     * void annoy
+     * reduces Gunka's mood
+     *
+     * @param gunka
+     */
+    public void annoy(Gunka gunka) {
+        gunka.mood -= 10;
+    }
+
+    /**
+     * hang up
+     * @param portrait
+     * @param place
+     * @returnnword
+     */
+    public String hangUp(Portrait portrait, String place){
+        String word=this.name+" hang up portrait "+portrait.name+" on "+place;
+        System.out.println(word);
+        return word;
+    }
+
+    /**
+     * subscribe
+     * @param portrait
+     * @return word
+     */
+    public Portrait subscribe(Portrait portrait){
+        portrait.subscribe=portrait.name;
+        return portrait;
+    }
+
+    /**
+     * play tube
+     * @param place
+     * @return word
+     */
+    public String playTube(String place){
+        String word=this.name+" play "+place;
+        System.out.println(word);
+        return word;
+    }
+
+    /**
+     * go outsise
+     * @return word
+     */
+    public String goOutside(){
+        String word=this.name+" go out";
+        System.out.println(word);
+        return word;
+    }
+
+    /**
+     * jaelous
+     * @param korotishka
+     * @return word
+     */
+    public String jealous(Korotishki korotishka){
+        this.mood-=5;
+        this.want("learn to somethink");
+        String word=this.name+" jealous "+korotishka.name;
+        System.out.println(word);
+        return word;
+    }
+
+    /**
+     * want
+     * @param think-what do you want
+     * @return boolean
+     */
+    public boolean want(String think){
+        if (think.equals("learn to somethink")){
+            return true;
+        }
+        if (think.equals("working")){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    /**
+     * thought
+     * @param how
+     * @return word
+     */
+    public String thought(HowGood how){
+        String word;
+        if(how.equals(HowGood.BAD)){
+            word=this.name+"thought badly, but he put the boots on our feet and not on our heads";
+            this.had="not completely empty";
+            this.hadThink="completely empty";
+        }
+        else{
+            word=this.name+"thought "+how.toString();
+            this.had="normal";
+            this.hadThink="normal";
+        }
+        return word;
+    }
+
+    /**
+     * doing
+     * @return word
+     */
+    public String doing(){
+        String how;
+        if (!this.want("learn to somethink") | !this.want("working")){
+            read(HowSpeed.SLOWLY);
+            write(HowSpeed.SLOWLY);
+            how="inside out";
+        }
+        else{
+            read(HowSpeed.NORMAL);
+            write(HowSpeed.NORMAL);
+            how="normal";
+        }
+        String word=this.name+" doing all "+how;
+        System.out.println(word);
+        return word;
+    }
+
+    /**
+     * read
+     * @param howSpeed
+     * @return word
+     */
+    public String read(HowSpeed howSpeed){
+        String how;
+        if (howSpeed.equals(HowSpeed.SLOWLY)){
+            how="by syllables";
+        }
+        else{
+            how="normal";
+        }
+        String word=this.name+" can read "+how;
+        System.out.println(word);
+        return word;
+    }
+
+    /**
+     * write
+     * @param howSpeed
+     * @return word
+     */
+    public String write(HowSpeed howSpeed){
+        String how;
+        if (howSpeed.equals(HowSpeed.SLOWLY)){
+            how="in block letters";
+        }
+        else{
+            how="normal";
+        }
+        String word=this.name+" can read "+how;
+        System.out.println(word);
+        return word;
+    }
+
+    /**
+     * chat
+     * @param korotishki
+     * @return word
+     */
+    public String chat(Korotishki korotishki){
+        String word;
+        if (korotishki.equals(this.friend)){
+            word=this.name+" could chat with "+korotishki.name+" for hours at a time.";
+        }
+        else{
+            word=this.name+" could not chat with "+korotishki.name+" for hours at a time.";
+        }
+        System.out.println(word);
+        return word;
+    }
+
+    /**
+     * be friends
+     * @param korotishki
+     * @return word
+     */
+    public String befriends(Korotishki korotishki){
+        String word;
+        if (korotishki.equals(this.friend)){
+            word="They quarreled twenty times a day and made up twenty times a day";
+        }
+        else{
+            word="They aren't friends.";
+        }
+        System.out.println(word);
+        return word;
+    }
+
+    /**
+     * like colors
+     * @return color
+     */
+    public String likeColors(){
+        return "bright";
+    }
+
+    /**
+     * dress
+     * @return word
+     */
+    public String dress(){
+        String word;
+        if (this.likeColors().equals("bright")){
+            word=this.name+"dressed up as such a parrot";
+        }
+        else{
+            word="dressed up as such a normal person";
+        }
+        System.out.println(word);
+        return word;
+    }
+
+    /**
+     * hang arround
+     * @param howLong
+     * @param where
+     * @return
+     */
+    public String hangArround(String howLong, String where){
+        String word=this.name+" hang arround "+howLong+" "+where;
+        System.out.println(word);
+        return word;
+    }
+
+    /**
+     * tell
+     * @param story
+     * @return word
+     */
+    public String tell(String story){
+        String word="- "+story;
+        System.out.println(word);
+        return word;
+    }
+
+    /**
+     * composing
+     * @return story
+     */
+    public String composing(){
+        String word="composing new tall tales";
+        String story="it is some story";
+        System.out.println(word);
+        return story;
+    }
+
+    /**
+     * offend
+     * @param korotishka
+     * @return word
+     */
+    public String offend(Korotishki korotishka){
+        String word;
+        if (this.power>korotishka.power){
+            word=this.name +" offed "+korotishka.name;
+        }
+        else{
+            word=korotishka.name +" offed "+this.name;
+        }
+        return word;
+    }
+    int knowladge=0;
 
 
     /**
@@ -41,24 +321,41 @@ public class Neznaika extends Korotishki implements Drawable, Dialogue {
         return (word);
     }
 
+    /**
+     * trundle
+     * @return word
+     */
     public String trundle() {
         String word = "Neznaika trundle.";
         System.out.println(word);
         return (word);
     }
 
+    /**
+     * go home
+     * @return word
+     */
     public String goHome() {
         String word = "Neznaika go home.";
         System.out.println(word);
         return (word);
     }
 
+    /**run
+     *
+     * @return word
+     */
     public String run() {
         String word = "Neznaika run.";
         System.out.println(word);
         return (word);
     }
 
+    /**
+     * cry
+     * @param word-what cry
+     * @return
+     */
     public String cry(String word) {
         System.out.println(word);
         return (word);
@@ -73,6 +370,9 @@ public class Neznaika extends Korotishki implements Drawable, Dialogue {
         System.out.println("Neznaika start to strum.");
     }
 
+    /**
+     * scrape
+     */
     public void scrape() {
         System.out.println("Neznaika start to scrape.");
     }
@@ -128,6 +428,16 @@ public class Neznaika extends Korotishki implements Drawable, Dialogue {
         String word = "Neznaika began to ask the " + korotishka.name + " to give him tool";
         System.out.println(word);
         return word;
+    }
+
+    @Override
+    public boolean love(String food){
+        if (food.equals("kastorka")){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     //Neznaika create new portrait and draw some character
@@ -200,10 +510,10 @@ public class Neznaika extends Korotishki implements Drawable, Dialogue {
             word = "- Ok, ok, don't worry";
         }
         if (Time.getInstance().time == 103) {
-            word = "So it was something that fell on me from the sun. A piece of the sun must have come off and hit me on the head";
+            word = "- So it was something that fell on me from the sun. A piece of the sun must have come off and hit me on the head";
         }
         if (Time.getInstance().time == 104) {
-            word = "Listen, Steklyashkin. You know what the story is: a piece of the sun broke off and hit me on the head.";
+            word = "- Listen, Steklyashkin. You know what the story is: a piece of the sun broke off and hit me on the head.";
         }
         System.out.println(word);
         return word;
@@ -232,14 +542,12 @@ public class Neznaika extends Korotishki implements Drawable, Dialogue {
         System.out.println(word);
         return word;
     }
-
-    /**
-     * void annoy
-     * reduces Gunka's mood
-     *
-     * @param gunka
-     */
-    public void annoy(Gunka gunka) {
-        gunka.mood -= 10;
+    @Override
+    public void writePoety() {
+        this.beganToaWanderAboutTheRoom();
+        this.lookUpAtTheCeiling();
+        this.starAtTheFloor();
+        this.putHisHandsUnderHisChin();
+        this.mutteringToHimselfUnderHisBreath();
     }
 }

@@ -1,17 +1,17 @@
 package character;
 
-import character.Korotishki;
-import enumeration.How;
-import enumeration.Speed;
-
 public class Beetle {
 
-    //constructor Bettle
+    /**
+     * constructor Bettle
+     */
     public Beetle() {
     }
 
     /**
      * void fly
+     *
+     * @return word
      */
     public String fly() {
         String word = "Beetle fly.";
@@ -21,6 +21,9 @@ public class Beetle {
 
     /**
      * void hit
+     *
+     * @param korotishka
+     * @return word
      */
     public String hit(Korotishki korotishka) {
         String word = "Bettle hit " + korotishka.name + " on the head.";

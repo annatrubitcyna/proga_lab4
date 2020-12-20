@@ -2,23 +2,15 @@ package character;
 
 import actions.Dialogue;
 import control.Time;
-import enumeration.How;
-import enumeration.Speed;
+import enumeration.HowCalmly;
+import enumeration.HowSpeed;
 
 public class Gunka extends Korotishki implements Dialogue {
-    //if there isn't name of character, his name is Gunka
-    public Gunka() {
-        this("Gunka");
-    }
-
     /**
-     * constructor
-     *
-     * @param name
-     * @brief Creates Gunka with a certan name
+     * constructor Gunka
      */
-    public Gunka(String name) {
-        super(name);
+    public Gunka() {
+        super("Gunka");
     }
 
     /**
@@ -34,53 +26,46 @@ public class Gunka extends Korotishki implements Dialogue {
         System.out.print("Gunka rejoced");
     }
 
-    //void sit don't canges something but she is in the story and after that Neznaika starts draw portrait
-
     /**
      * void sitTo
      *
      * @param speed
      * @param place
      */
-    public Boolean sitTo(Speed speed, String place) {
+    public Boolean sitTo(HowSpeed speed, String place) {
         System.out.print(", " + speed.toString() + " sit down" + " on a " + place);
         return true;
     }
-
-    //if Gunka wanted to see his portrait quickly his patience is small
 
     /**
      * void wantedToSee changes patient
      *
      * @param speed
      */
-    public void wantedToSee(Speed speed) {
+    public void wantedToSee(HowSpeed speed) {
         System.out.println("Gunka wanted to see his portrait " + speed.toString());
-        if (speed == Speed.QUICKLY) {
+        //if Gunka wanted to see his portrait quickly his patience is small
+        if (speed == HowSpeed.QUICKLY) {
             patience = 0;
         }
-        if (speed == Speed.NORMAL) {
+        if (speed == HowSpeed.NORMAL) {
             patience = 50;
         }
-        if (speed == Speed.SLOWLY) {
+        if (speed == HowSpeed.SLOWLY) {
             patience = 100;
         }
     }
-
-    //he sit restlessly if his patience is small
 
     /**
      * void sit
      *
      * @param how
      */
-    public void sit(How how) {
-        if (how == How.RESTLESSLY) {
-            System.out.print("Impatient, he couldn't sit " + How.CALMLY.toString() + " in his chair");
+    public void sit(HowCalmly how) {
+        if (how == HowCalmly.RESTLESSLY) {
+            System.out.print("Impatient, he couldn't sit " + HowCalmly.CALMLY.toString() + " in his chair");
         }
     }
-
-    //he spin if his patience is small
 
     /**
      * void spin

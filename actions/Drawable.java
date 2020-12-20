@@ -27,12 +27,18 @@ public interface Drawable {
      */
     Portrait.Face drawDetail(Portrait.Face portrait, Colors color);
 
-    //if character erases the portrait the all in the portraits is white
+    /**
+     * erases portrait
+     *
+     * @param portrait
+     * @return white portrait
+     */
     default Portrait erases(Portrait.Face portrait) {
         portrait.nose = Colors.WHITE;
         portrait.ears = Colors.WHITE;
         portrait.lips = Colors.WHITE;
         portrait.eyes = Colors.WHITE;
+        //if character erases the portrait the all in the portraits is white
         return portrait;
     }
 

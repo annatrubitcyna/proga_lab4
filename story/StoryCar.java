@@ -1,12 +1,8 @@
 package story;
 
 import actions.Car;
-import actions.Portrait;
 import character.*;
 import control.Author;
-import enumeration.Colors;
-import enumeration.How;
-import enumeration.Speed;
 import exceptions.NoSparklingWaterException;
 
 public class StoryCar implements Story {

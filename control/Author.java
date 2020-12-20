@@ -3,12 +3,13 @@ package control;
 import actions.Dialogue;
 
 public class Author implements Dialogue {
-    /**
-     * void name
-     */
     public String name;
 
-    //if there isn't name of Author, his name is Nikolay Nosov
+    /**
+     * constructor
+     *
+     * @brief if there isn't name of Author, his name is Nikolay Nosov
+     */
     public Author() {
         this("Nikolay Nosov");
     }
@@ -23,14 +24,18 @@ public class Author implements Dialogue {
         this.name = name;
     }
 
-    //Author start story at the beginning of Story
-
     /**
      * String method startStory
-     * changes time depending on the num os story
-     * speak a word at the beginning of Story
+     *
+     * @param num_story
+     * @param story
+     * @return word
+     * @brief changes time depending on the num os story and speak a word at the beginning of Story
      */
     public String startStory(int num_story, String story) {
+        if (num_story == 1) {
+            Time.getInstance().time = 0;
+        }
         if (num_story == 2) {
             Time.getInstance().time = 100;
         }
@@ -40,16 +45,18 @@ public class Author implements Dialogue {
         if (num_story == 4) {
             Time.getInstance().time = 300;
         }
+        if (num_story == 5) {
+            Time.getInstance().time = 400;
+        }
         String word = "Today I will tell you a story about the shorties from Sunny city." + "\n" + story;
         System.out.println(word);
         return (word);
     }
 
-    //Author finish story at the end of Story
-
     /**
-     * void finishStory
-     * speak a word at the end of Story
+     * finish Story
+     *
+     * @brief speak a word at the end of Story
      */
     public String finishStory() {
         return ("That's all for today.");
@@ -69,6 +76,9 @@ public class Author implements Dialogue {
         if (Time.getInstance().time == 201) {
             word = "One day Neznaika wanted to become a musician.";
         }
+        if (Time.getInstance().time == 401) {
+            word = "One day Neznaika wanted to become a poet.";
+        }
         System.out.println(word);
         return word;
     }
@@ -85,7 +95,7 @@ public class Author implements Dialogue {
             word = "That's how strange this Neznaika was!";
         }
         if (Time.getInstance().time == 202) {
-            word = "Dunno has since stopped playing the trumpet!";
+            word = "Neznaika has since stopped playing the trumpet!";
         }
         System.out.println(word);
         return word;

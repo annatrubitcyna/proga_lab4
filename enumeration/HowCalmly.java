@@ -1,11 +1,9 @@
 package enumeration;
 
-public enum Thickness {
-    NOT,
-    NORMAL,
-    THICK,
-    THIN,
-    SMALL;
+public enum HowCalmly {
+    CALMLY,
+    RESTLESSLY;
+
     @Override
     public String toString() {
         return this.name().toLowerCase();

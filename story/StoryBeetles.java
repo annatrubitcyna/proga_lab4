@@ -5,8 +5,8 @@ import character.*;
 import control.Author;
 import control.Time;
 import enumeration.Colors;
-import enumeration.How;
-import enumeration.Speed;
+import enumeration.HowCalmly;
+import enumeration.HowSpeed;
 
 import java.io.PipedOutputStream;
 
@@ -28,9 +28,25 @@ public class StoryBeetles implements Story {
             Ponchik ponchik = new Ponchik();
             Pilulkin pilulkin = new Pilulkin();
             Steklashkin steklashkin = new Steklashkin();
+            Malishki malishka = new Malishki();
 
             //heroes enter into the story
             System.out.println(gunka.live() + neznaika.live() + tubik.live() + gusla.live() + pilulkin.live() + steklashkin.live());
+            //Introduction
+            neznaika.dress();
+            neznaika.hangArround("whole days", "the city");
+            String story = neznaika.composing();
+            if (neznaika.offend(malishka).equals("offend malishka")) {
+                if (malishka.seeing("orange shirt")) {
+                    malishka.turned();
+                }
+            }
+            neznaika.friend = gunka;
+            gunka.friend = neznaika;
+            neznaika.chat(gunka);
+            neznaika.befriends(gunka);
+
+            String neznaikaBecameFamous = neznaika.becameFamous();
             //Author speak
             String speakNarratorBegginer = narrator.speak();
             //if autor speak about Neznaika he doing something in the story

@@ -3,7 +3,6 @@ import exceptions.NoSparklingWaterException;
 import story.*;
 
 public class Main {
-
     public static void main(String[] args) throws NoSparklingWaterException {
         /**
          * anonymous class
@@ -25,7 +24,7 @@ public class Main {
 
             @Override
             public String ask() {
-                String word = " Do you want to will get acquainted with the book by Nicolai Nosov: "The Adventures of Neznaika and his friends" today? ";
+                String word = "Do you want to will get acquainted with the book by Nicolai Nosov: The Adventures of Neznaika and his friends?";
                 System.out.println(word);
                 return word;
             }
@@ -33,7 +32,7 @@ public class Main {
         //start story
         //it's speak, but he isn't author
         dialogue.speak();
-        //there are 4 story
+        //there are 5 story
         StoryBeetles storyBeetles = new StoryBeetles();
         storyBeetles.story();
         StoryMusician storyMusician = new StoryMusician();
@@ -42,5 +41,7 @@ public class Main {
         storyArtist.story();
         StoryCar storyCar = new StoryCar();
         storyCar.story();
+        StoryPoet storyPoet=new StoryPoet();
+        storyPoet.story();
     }
 }
